@@ -1,15 +1,34 @@
-package com.example.demo;
+package com.example.demo.entity;
 import java.util.Objects;
 
 public class Employee {
 
     private final String name;
     private final String surname;
+    int departmentId;
+    double salary;
 
-    public Employee(String name,
-                    String surname) {
+    public Employee(String name, String surname, int departmentId, double salary) {
         this.name = name;
         this.surname = surname;
+        this.departmentId = departmentId;
+        this.salary = salary;
+    }
+
+    public int getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
     public String getName() {
