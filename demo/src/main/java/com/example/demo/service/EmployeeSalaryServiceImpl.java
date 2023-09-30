@@ -1,13 +1,15 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Employee;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class EmployeeSalaryServiceImpl implements EmployeeSalaryService{
+@Service
+public class EmployeeSalaryServiceImpl implements EmployeeSalaryService {
     private final JavaEmployeeService javaEmployeeService;
 
     public EmployeeSalaryServiceImpl(JavaEmployeeService javaEmployeeService) {
@@ -23,10 +25,10 @@ public class EmployeeSalaryServiceImpl implements EmployeeSalaryService{
 
     @Override
     public Employee getMinSalaryEmployee(int departmentId) {
-            return javaEmployeeService.getEmployees().stream()
-                    .filter(employee -> employee.getDepartmentId() == departmentId)
-                    .min(Comparator.comparingInt(emp -> (int) emp.getSalary())).orElseThrow();
-        }
+        return javaEmployeeService.getEmployees().stream()
+                .filter(employee -> employee.getDepartmentId() == departmentId)
+                .min(Comparator.comparingInt(emp -> (int) emp.getSalary())).orElseThrow();
+    }
 
 
     @Override
