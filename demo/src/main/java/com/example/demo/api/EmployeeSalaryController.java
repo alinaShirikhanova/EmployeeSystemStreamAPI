@@ -29,11 +29,13 @@ public class EmployeeSalaryController {
     }
 
     @GetMapping("/all")
-    public List<Employee> getEmployeesByDepartment(@RequestParam("departmentId") int departmentId) {
-        return employeeSalaryService.getEmployeesByDepartment(departmentId);
-    }
-    @GetMapping("/all")
     public List<Employee> getAllEmployees() {
         return employeeSalaryService.getAllEmployees();
     }
+
+    @GetMapping(value = "/all", params = { "student-id", "theme-id" })
+    public List<Employee> getEmployeesByDepartment(@RequestParam(value = "departmentId") int departmentId) {
+        return employeeSalaryService.getEmployeesByDepartment(departmentId);
+    }
+
 }

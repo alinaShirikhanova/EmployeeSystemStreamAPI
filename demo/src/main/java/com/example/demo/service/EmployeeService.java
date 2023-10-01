@@ -20,7 +20,7 @@ public class EmployeeService implements JavaEmployeeService {
             throw new EmployeeStorageIsFullException("Превышено количество сотрудников");
         }
 
-        if (allEmployees.stream().allMatch(employee -> employee.getName().equals(name) && employee.getSurname().equals(surname)))
+        if (allEmployees.stream().anyMatch(employee -> employee.getName().equals(name) && employee.getSurname().equals(surname)))
             throw new EmployeeAlreadyAddedException("Сотрудник с таким именем и фамилией уже существует");
 
         Employee employee = new Employee(name, surname, departmentId, salary);
