@@ -1,20 +1,37 @@
 package com.example.demo.entity;
+
+
+
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Objects;
 
 public class Employee {
 
-    private final String name;
-    private final String surname;
+    private String name;
+    private  String surname;
     int departmentId;
     double salary;
 
     public Employee(String name, String surname, int departmentId, double salary) {
-        this.name = name;
-        this.surname = surname;
+
         this.departmentId = departmentId;
         this.salary = salary;
     }
 
+    public void setName(String name, String surname) {
+        this.name = checkDetails(name);
+        this.surname = checkDetails(surname);
+
+    }
+
+    public String checkDetails(String line){
+        if (!StringUtils.capitalize(line).equals(line))
+            throw new RuntimeException("Имя и фамилия должны начинаться с большой буквы");
+        if (!StringUtils.isAlpha(line))
+            throw new RuntimeException("Имя и фамилия должны состоять только из латинских символов");
+        return line;
+    }
     public int getDepartmentId() {
         return departmentId;
     }
