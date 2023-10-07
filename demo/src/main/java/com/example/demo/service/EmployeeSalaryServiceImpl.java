@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -39,7 +40,8 @@ public class EmployeeSalaryServiceImpl implements EmployeeSalaryService {
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
-        return javaEmployeeService.getEmployees();
+    public Map<Integer, List<Employee>> getAllEmployees() {
+        return javaEmployeeService.getEmployees().stream()
+                .collect(Collectors.groupingBy(emp -> emp.getDepartmentId()));
     }
 }
