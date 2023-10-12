@@ -32,8 +32,8 @@ public class EmployeeService implements JavaEmployeeService {
         Employee emp = allEmployees.stream()
                         .filter(em -> em.getName().equals(name) && em.getSurname().equals(surname)).findFirst()
                 .orElseThrow(() -> new EmployeeNotFoundException("Сотрудника с таким именем или фамилией нету"));
-        allEmployees.removeIf(employee -> employee.getName().equals(name) && employee.getSurname().equals(surname));
-        throw new EmployeeNotFoundException("Сотрудника с таким именем или фамилией нету");
+        allEmployees.remove(emp);
+        return emp;
     }
 
     public Employee getEmployee(String name, String surname) {

@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 
-
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
@@ -9,12 +8,13 @@ import java.util.Objects;
 public class Employee {
 
     private String name;
-    private  String surname;
+    private String surname;
     int departmentId;
     double salary;
 
     public Employee(String name, String surname, int departmentId, double salary) {
-
+        this.name = name;
+        this.surname = surname;
         this.departmentId = departmentId;
         this.salary = salary;
     }
@@ -25,13 +25,14 @@ public class Employee {
 
     }
 
-    public String checkDetails(String line){
+    public String checkDetails(String line) {
         if (!StringUtils.capitalize(line).equals(line))
             throw new RuntimeException("Имя и фамилия должны начинаться с большой буквы");
         if (!StringUtils.isAlpha(line))
             throw new RuntimeException("Имя и фамилия должны состоять только из латинских символов");
         return line;
     }
+
     public int getDepartmentId() {
         return departmentId;
     }
